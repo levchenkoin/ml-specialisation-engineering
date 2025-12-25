@@ -51,13 +51,11 @@ def gradient_descent(
     w, b = float(w0), float(b0)
     history: list[float] = []
     for _ in range(epochs):
-        j = cost(x, y, w, b)
-        history.append(j)
         dj_dw, dj_db = gradients(x, y, w, b)
         w -= alpha * dj_dw
         b -= alpha * dj_db
-    # финальная стоимость
-    history.append(cost(x, y, w, b))
+        history.append(cost(x, y, w, b))
+
     return w, b, history
 
 @dataclass

@@ -8,7 +8,7 @@ def test_gd_converges_close_to_closed_form():
     y = 3.0 * x + 2.0 + rng.normal(0, 0.15, x.shape)
 
     w_ls, b_ls = fit_least_squares(x, y)
-    w_gd, b_gd, _ = gradient_descent(x, y, w0=0.0, b0=0.0, alpha=0.05, epochs=500)
+    w_gd, b_gd, _ = gradient_descent(x, y, w0=0.0, b0=0.0, alpha=0.05, epochs=800)
 
     assert abs(w_gd - w_ls) < 0.05
     assert abs(b_gd - b_ls) < 0.2

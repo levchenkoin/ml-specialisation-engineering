@@ -12,6 +12,7 @@ def main():
     p.add_argument("--b0", type=float, default=0.0)
     p.add_argument("--alpha", type=float, default=0.01)
     p.add_argument("--epochs", type=int, default=1000)
+    p.add_argument("--out", type=str, default="reports/cost_vs_epochs_gd.png")
     args = p.parse_args()
 
     x = np.array(args.x, dtype=float)
@@ -25,8 +26,8 @@ def main():
     plt.title("Cost over epochs (gradient descent)")
     plt.xlabel("epoch")
     plt.ylabel("J(w,b)")
-    os.makedirs("reports", exist_ok=True)
-    plt.savefig("reports/cost_vs_w.png", dpi=150)
+    os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
+    plt.savefig(args.out, dpi=150)
     plt.show()
 
 if __name__ == "__main__":
